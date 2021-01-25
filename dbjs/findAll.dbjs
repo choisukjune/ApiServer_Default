@@ -1,6 +1,6 @@
 var db_nm = "data";
 var col_nm = "all";
-var page = 3
+var page = 2
 
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );
@@ -10,7 +10,7 @@ var listCnt = 24;
 //collection data all remove;
 
 var sort = {}
-    sort.saleRatio = -1;
+    sort._id = -1;
 
 var _q = {};
 var limit = listCnt;

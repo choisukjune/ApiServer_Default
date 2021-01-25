@@ -16,7 +16,7 @@ var fs = require( "fs" );
 var ROOT_PATH = process.cwd();
 
 var CP_COMMAND = {};
-	CP_COMMAND.MONGO = "..\\Binary\\mongodb\\4.2.8\\bin\\mongo";
+	CP_COMMAND.MONGO = "..\\Binary\\Mongodb\\mongodb-win32-x86_64-windows-4.4.3\\bin\\mongo";
 
 var DBJS_DIRECTORY_PATH = ROOT_PATH + "/dbjs/";
 var _tDbjs_PATH = ROOT_PATH + "/tdbjs/";
@@ -390,6 +390,65 @@ var paramToObject = function( url ){
 		res.end( _tHtml )	
 
 	});
+
+	/**
+	 * 쿼리파일을 실행하는 라우터
+	 * @function
+	 * @param {http.ClientRequest} req
+	 * <code>
+		{
+
+		}
+	* </code>
+	*
+	* @param {http.ClientResponse} res
+	* <code>
+		{
+
+		}
+	* </code>
+	*
+	* @example
+	* <code>
+		http://localhost:8888/getTags
+	* </code>
+	*/
+	global.server.addRouter("/getTags",function( req, res ){
+		
+		var routerNm = req.url.split("?")[0];
+		//var paramsO = paramToObject( req.url );
+		var _tdbjs_nm = "getTags";
+				
+
+		res.statusCode = 200;
+		res.setHeader( "Access-Control-Allow-Headers", "Content-Type" );
+		res.setHeader( "Access-Control-Allow-Origin", "*" );
+		res.setHeader( "Access-Control-Allow-Methods", "OPTIONS,POST,GET" );
+		console.log( _tDbjs_PATH + "/" + _tdbjs_nm + ".tdbjs" ); 
+		
+		try
+		{
+			var _tQuery = fs.readFileSync( _tDbjs_PATH + "/" + _tdbjs_nm + ".tdbjs" ).toString();
+		}
+		catch( err )
+		{
+			console.log( routerNm + " - DBJS File Not Found! - " + err );
+			res.end("{ sucess : 0, data : null }");
+		}
+		
+		var query = _tQuery//.replace( "<!=COL_NM=!>", paramsO.colNm );
+		var dbjs_nm = "find_" + _tdbjs_nm + ".dbjs";
+
+		var FILE_PATH = DBJS_DIRECTORY_PATH + dbjs_nm;
+		
+		console.log( FILE_PATH )
+
+		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
+		var r = exec_query_DB( dbjs_nm )
+		res.end( r )	
+
+	});
+
 })();
 
 //-------------------------------------------------------;

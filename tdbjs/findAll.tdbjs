@@ -10,7 +10,7 @@ var listCnt = 24;
 //collection data all remove;
 
 var sort = {}
-    sort.saleRatio = -1;
+    sort._id = -1;
 
 var _q = {};
 var limit = listCnt;

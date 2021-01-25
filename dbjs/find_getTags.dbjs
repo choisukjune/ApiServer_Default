@@ -1,0 +1,27 @@
+var db_nm = "data";
+var col_nm = "all";
+
+var db0 = db.getSiblingDB( db_nm );
+var col0 = db0.getCollection( col_nm );
+
+var tags = {}
+
+col0.find({}).forEach(function(doc){
+
+    doc.info.forEach(function(item){
+        if( !tags[ item ] ) tags[ item ] = 1;
+        else ++tags[ item ];
+    })
+})
+
+var r = {}
+var s,so;
+for( s in tags ){
+    so = tags[ s ]
+    if( so > 100 )
+    {
+        r[ s ] = so;
+    }
+}
+
+printjson( r )

@@ -16,7 +16,7 @@ var fs = require( "fs" );
 var ROOT_PATH = process.cwd();
 
 var CP_COMMAND = {};
-	CP_COMMAND.MONGO = "..\\Binary\\mongodb\\4.2.8\\bin\\mongo";
+	CP_COMMAND.MONGO = "..\\Binary\\Mongodb\\mongodb-win32-x86_64-windows-4.4.3\\bin\\mongo";
 
 var DBJS_DIRECTORY_PATH = ROOT_PATH + "/dbjs/";
 
