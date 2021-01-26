@@ -1,6 +1,6 @@
 var db_nm = "data";
 var col_nm = "all";
-var page = 2
+var page = 5
 
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );

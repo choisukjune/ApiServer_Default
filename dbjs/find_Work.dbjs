@@ -1,6 +1,6 @@
 var db_nm = "data";
 var col_nm = "all";
-var page = 5
+var page = 3
 
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );
@@ -11,7 +11,7 @@ var sort = {}
     sort._id = -1;
 
 var _q = {}
-    _q.info = { $all : [ "PANTS" ] };
+    _q.info = { $all : [ "Work" ] };
 var limit = 30;
 
 var skip = ( page - 1 ) * 30

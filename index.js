@@ -41,7 +41,7 @@ global.ROUTER_LIST = {};
 global.CONST = {};
 global.CONST.MongoDB = {};
 global.CONST.MongoDB.OPTIONS = {
-	"self" : { ID : "tjrwns", PWD : "123qweasdzxc", HOST : "localhost", PORT : 59320 }	
+	"self" : { ID : "admin", PWD : "tjrwns2482", HOST : "localhost", PORT : 59320 }	
 };
 
 //-------------------------;
