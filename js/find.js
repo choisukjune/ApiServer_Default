@@ -16,7 +16,8 @@ var fs = require( "fs" );
 var ROOT_PATH = process.cwd();
 
 var CP_COMMAND = {};
-	CP_COMMAND.MONGO = "..\\Binary\\Mongodb\\mongodb-win32-x86_64-windows-4.4.3\\bin\\mongo";
+	//CP_COMMAND.MONGO = "..\\Binary\\Mongodb\\mongodb-win32-x86_64-windows-4.4.3\\bin\\mongo";
+	CP_COMMAND.MONGO = "mongo";
 
 var DBJS_DIRECTORY_PATH = ROOT_PATH + "/dbjs/";
 var _tDbjs_PATH = ROOT_PATH + "/tdbjs/";
@@ -39,7 +40,7 @@ var _tDbjs_PATH = ROOT_PATH + "/tdbjs/";
 var exec_query_DB = function( dbjsNm, bResult ){
 
 	var DBJS_NM = dbjsNm;
-	var FILE_PATH = ROOT_PATH + "\\dbjs\\" + DBJS_NM;
+	var FILE_PATH = ROOT_PATH + "/dbjs/" + DBJS_NM;
 
 	var _t_command = CP_COMMAND.MONGO + " --username <!=ID=!> --password <!=PWD=!> --authenticationDatabase admin --host <!=HOST=!> --port <!=PORT=!> admin <!=FILE_PATH=!>";
 	if( bResult ) _t_command = _t_command + " > " + dbjsNm + "__" + Date.now() + ".result";
