@@ -42,7 +42,7 @@ var exec_query_DB = function( dbjsNm, bResult ){
 	var DBJS_NM = dbjsNm;
 	var FILE_PATH = ROOT_PATH + "/dbjs/" + DBJS_NM;
 
-	var _t_command = CP_COMMAND.MONGO + " --username <!=ID=!> --password <!=PWD=!> --authenticationDatabase admin --host <!=HOST=!> --port <!=PORT=!> admin <!=FILE_PATH=!>";
+	var _t_command = CP_COMMAND.MONGO + " --username <!=ID=!> --password <!=PWD=!> --authenticationDatabase admin --host <!=HOST=!> --port <!=PORT=!> admin \"<!=FILE_PATH=!>\"";
 	if( bResult ) _t_command = _t_command + " > " + dbjsNm + "__" + Date.now() + ".result";
 	
 	var command = _t_command.replace( "<!=ID=!>", global.CONST.MongoDB.OPTIONS.self.ID )
