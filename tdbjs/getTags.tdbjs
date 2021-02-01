@@ -33,7 +33,7 @@ for( s in tags ){
     so = tags[ s ]
     if( so > 100 )
     {
-        r.tages[ s ] = so;
+        r.tags[ s ] = so;
     }
 }
 
