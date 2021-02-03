@@ -11,7 +11,7 @@ var sort = {}
     sort._id = -1;
 
 var _q = {}
-    _q.info = { $all : [ "<!=TAG=!>" ] };
+    _q.info = { $in : [ "<!=TAG=!>" ] };
 var limit = 30;
 
 var skip = ( page - 1 ) * 30
