@@ -10,6 +10,7 @@ var tags = {}
 var r = {
 	sites : []
 	, tags : {}
+	, brands : []
 }
 
 col0.find({}).forEach(function(doc){
@@ -18,6 +19,8 @@ col0.find({}).forEach(function(doc){
         if( !tags[ item ] ) tags[ item ] = 1;
         else ++tags[ item ];
     })
+    var brand = doc.brand.trim();
+    if( r.brands.indexOf( brand ) == -1 ) r.brands.push( brand )
 })
 
 allCols.forEach(function(col){
@@ -36,5 +39,7 @@ for( s in tags ){
         r.tags[ s ] = so;
     }
 }
+
+r.brands.sort();
 
 printjson( r )
