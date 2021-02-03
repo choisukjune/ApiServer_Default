@@ -7,9 +7,11 @@ var allCols = db0.getCollectionNames();
 
 
 var tags = {}
+var brands = {}
 var r = {
 	sites : []
 	, tags : {}
+	, brands : []
 }
 
 col0.find({}).forEach(function(doc){
@@ -18,6 +20,9 @@ col0.find({}).forEach(function(doc){
         if( !tags[ item ] ) tags[ item ] = 1;
         else ++tags[ item ];
     })
+    var brand = doc.brand.trim();
+    if( !brands[ brand ] ) brands[ brand ] = 1;
+    else ++brands[ brand ];
 })
 
 allCols.forEach(function(col){
@@ -36,5 +41,16 @@ for( s in tags ){
         r.tags[ s ] = so;
     }
 }
+
+var s,so;
+for( s in brands ){
+    so = brands[ s ]
+    if( so > 50 )
+    {
+        r.brands.push( s );
+    }
+}
+
+r.brands.sort();
 
 printjson( r )
