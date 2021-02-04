@@ -393,7 +393,8 @@ var paramToObject = function( url ){
 			res.end("{ sucess : 0, data : null }");
 		}
 		
-		var query = _tQuery.replace( "<!=COL_NM=!>", paramsO.colNm );
+		var query = _tQuery.replace( "<!=COL_NM=!>", paramsO.colNm )
+				.replace( "<!=DB_NM=!>", paramsO.dbNm );
 		var dbjs_nm = "find_" + paramsO.colNm + ".dbjs";
 
 		var FILE_PATH = DBJS_DIRECTORY_PATH + dbjs_nm;

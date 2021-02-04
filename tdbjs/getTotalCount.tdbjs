@@ -1,4 +1,4 @@
-var db_nm = "data";
+var db_nm = "<!=DB_NM=!>>";
 var col_nm = "<!=COL_NM=!>";
 
 var db0 = db.getSiblingDB( db_nm );
