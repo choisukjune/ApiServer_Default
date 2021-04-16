@@ -8,7 +8,7 @@ var col0 = db0.getCollection( col_nm );
 //collection data all remove;
 
 var sort = {}
-    sort._id = -1;
+    sort.crwaling_date_o.timeStamp = -1;
 
 var _q = {}
     _q.info = { $in : [ "<!=TAG=!>" ] };
@@ -19,7 +19,7 @@ var skip = ( page - 1 ) * 30
 var cnt = col0.find( _q ).count();
 var r = []
 
-col0.find( _q ).sort( sort ).limit( limit ).skip( skip ).sort({ crwaling_date_o.timeStamp : -1 }).forEach(function(item){
+col0.find( _q ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )   
 })
 

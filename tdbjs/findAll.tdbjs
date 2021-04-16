@@ -10,7 +10,7 @@ var listCnt = 24;
 //collection data all remove;
 
 var sort = {}
-    sort._id = -1;
+    sort.crwaling_date_o.timeStamp = -1;
 
 var _q = {};
 var limit = listCnt;
@@ -18,7 +18,7 @@ var limit = listCnt;
 var skip = ( page - 1 ) * listCnt
 
 var r = [] 
-col0.find({}).sort( sort ).limit( limit ).skip( skip ).sort({ crwaling_date_o.timeStamp : -1 }).forEach(function(item){
+col0.find({}).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )   
 })
 
