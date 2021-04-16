@@ -18,7 +18,7 @@ var limit = listCnt;
 var skip = ( page - 1 ) * listCnt
 
 var r = [] 
-col0.find({}).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
+col0.find({}).sort( sort ).limit( limit ).skip( skip ).sort({ crwaling_date_o.timeStamp : -1 }).forEach(function(item){
     r.push( item )   
 })
 
