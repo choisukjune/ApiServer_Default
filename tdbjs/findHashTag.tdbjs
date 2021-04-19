@@ -7,7 +7,9 @@ var col0 = db0.getCollection( col_nm );
 
 //collection data all remove;
 
-var sort = {saleRatio : -1,"crwaling_date_o.timeStamp" : -1}
+var sort = {}
+	sort[ "crwaling_date_o.timeStamp" ] = -1;
+//	sort[ "saleRatio" ] = -1;
 
 var _q = {}
     _q.info = { $in : [ "<!=TAG=!>" ] };
