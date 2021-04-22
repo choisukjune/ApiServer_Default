@@ -218,7 +218,8 @@ var paramToObject = function( url ){
 		}
 		
 		var query = _tQuery.replace( "<!=TAG=!>", decodeURIComponent( paramsO.tag ) )
-		.replace( "<!=PAGE=!>", paramsO.page );
+		.replace( "<!=PAGE=!>", paramsO.page )
+		.replace( "<!=LIMIT=!>", paramsO.limit );
 		var dbjs_nm = "find_" + _tag.replace(/\s/gi,"_") + ".dbjs";
 
 		var FILE_PATH = DBJS_DIRECTORY_PATH + dbjs_nm;
@@ -335,7 +336,8 @@ var paramToObject = function( url ){
 			res.end("{ sucess : 0, data : null }");
 		}
 		
-		var query = _tQuery.replace( "<!=PAGE=!>", paramsO.page );
+		var query = _tQuery.replace( "<!=PAGE=!>", paramsO.page )
+				.replace( "<!=LIMIT=!>", paramsO.limit );
 		var dbjs_nm = _tdbjs_nm + ".dbjs";
 
 		var FILE_PATH = DBJS_DIRECTORY_PATH + dbjs_nm;
