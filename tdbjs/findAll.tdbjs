@@ -5,7 +5,7 @@ var page = <!=PAGE=!>
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );
 
-var listCnt = 28;
+var listCnt = 7;
 
 //collection data all remove;
 
