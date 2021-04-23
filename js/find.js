@@ -537,10 +537,8 @@ var paramToObject = function( url ){
 	global.server.addRouter("/searchProduct",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "searchProduct";
-				
-		var _tag = decodeURIComponent( paramsO.tag )
 
 		res.statusCode = 200;
 		res.setHeader( "Access-Control-Allow-Headers", "Content-Type" );
