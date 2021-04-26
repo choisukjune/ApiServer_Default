@@ -136,9 +136,9 @@ var paramToObject = function( url ){
 	* </code>
 	*/
 	global.server.addRouter("/find",function( req, res ){
-		debugger;
+
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "find";
 				
 
@@ -196,7 +196,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/findHashTag",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "findHashTag";
 				
 		var _tag = decodeURIComponent( paramsO.tag )
@@ -257,7 +257,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/findContentsAll",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "findContentsAll";
 				
 		var _tag = decodeURIComponent( paramsO.tag )
@@ -316,7 +316,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/findAll",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "findAll";
 				
 
@@ -375,7 +375,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/getTotalCount",function( req, res ){
 		
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "getTotalCount";
 				
 
@@ -434,7 +434,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/getHtml",function( req, res ){
 		
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 				
 		res.statusCode = 200;
 		res.setHeader( "Access-Control-Allow-Headers", "Content-Type" );
