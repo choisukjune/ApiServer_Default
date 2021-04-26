@@ -13,7 +13,7 @@ var sort = {}
 	sort[ "saleRatio" ] = -1;
 
 var _q = {}
-    _q.info = { $in : [ "<!=TAG=!>" ] };
+    _q.info = { $in : [ decodeURIComponent("<!=TAG=!>") ] };
 
 
 var skip = ( page - 1 ) * limit
