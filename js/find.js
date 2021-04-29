@@ -196,7 +196,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/findHashTag",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 		var _tdbjs_nm = "findHashTag";
 				
 		var _tag = decodeURIComponent( paramsO.tag )
