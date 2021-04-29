@@ -196,7 +196,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/findHashTag",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( decodeURIComponent( req.url ) );
+		var paramsO = paramToObject( decodeURIComponent( req.url  ));
 		var _tdbjs_nm = "findHashTag";
 				
 		var _tag = decodeURIComponent( paramsO.tag )
@@ -537,7 +537,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/searchProduct",function( req, res ){
 		debugger;
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( decodeURIComponent( req.url ) );
+		var paramsO = paramToObject( decodeURIComponent( req.url  ));
 		var _tdbjs_nm = "searchProduct";
 
 		res.statusCode = 200;
