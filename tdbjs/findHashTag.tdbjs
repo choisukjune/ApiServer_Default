@@ -26,7 +26,7 @@ var skip = ( page - 1 ) * limit
 
 var _q = { nm : { $regex : keyword } }
 var _q1 = { brand : { $regex : keyword } }
-var _q2 = { info : { $in : [ keyword ] } },
+var _q2 = { info : { $in : [ keyword ] } }
 
 var cnt = col0.find( _q ).count();
 var r = []
