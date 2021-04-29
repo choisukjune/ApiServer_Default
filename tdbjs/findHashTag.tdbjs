@@ -15,11 +15,14 @@ var sort = {}
 
 var _q = {
     $or : [
-		{ nm : { $regex : keyword, '$options': 'i'  } },
-		{ brand : { $regex : keyword, '$options': 'i'  } },
+	//	{ nm : { $regex : keyword, '$options': 'i'  } },
+	//	{ brand : { $regex : keyword, '$options': 'i'  } },
 	//	{ info : { $in : [ keyword ]} }
+		{ $text: { $search: keyword } }
 	]
 }
+
+
 
 var skip = ( page - 1 ) * limit
 
