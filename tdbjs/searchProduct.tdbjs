@@ -9,16 +9,16 @@ var col0 = db0.getCollection( col_nm );
 
 //collection data all remove;
 
-var sort = {score:{$meta:"textScore"} }
+var sort = {};
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
-//	sort[ "saleRatio" ] = -1;
+	sort[ "saleRatio" ] = -1;
 
 var _q = {
     $or : [
 		{ nm : { $regex : keyword, '$options': 'i'  } },
 		{ brand : { $regex : keyword, '$options': 'i'  } },
-		{ info : { $in : [ keyword ]} },
-		{ $text: {$search: keyword }}
+		{ info : { $in : [ keyword ] } },
+//		{ $text: { $search: keyword } }
 	]
 }
 var _q1 = { score : { $meta: "textScore" } }
@@ -32,4 +32,4 @@ col0.find( _q ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )   
 })
 
-printjson({cnt : cnt, r : r })
+printjson({cnt : cnt, r : r });
