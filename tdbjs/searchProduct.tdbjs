@@ -13,15 +13,8 @@ var sort = {score:{$meta:"textScore"} }
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
 //	sort[ "saleRatio" ] = -1;
 
-var _q = {
-    $or : [
-//		{ nm : { $regex : keyword, '$options': 'i'  } },
-//		{ brand : { $regex : keyword, '$options': 'i'  } },
-	//	{ info : { $in : [ keyword ]} }
-		{ $text: {$search: keyword }},{score:{$meta: "textScore"} }
-	]
-}
-
+var _q = { $text: { $search: "내일 피시방" } }
+var _q1 = { score : { $meta: "textScore" } }
 
 var skip = ( page - 1 ) * limit
 
