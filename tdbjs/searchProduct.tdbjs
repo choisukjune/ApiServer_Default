@@ -15,8 +15,8 @@ var sort = {};
 
 var _q = {
     $or : [
-		{ nm : { $regex : keyword, '$options': 'i'  } },
-		{ brand : { $regex : keyword, '$options': 'i'  } },
+		{ nm : { $regex : keyword } },
+		{ brand : { $regex : keyword } },
 		{ info : { $in : [ keyword ] } },
 //		{ $text: { $search: keyword } }
 	]
