@@ -26,16 +26,23 @@ var skip = ( page - 1 ) * limit
 
 var _q = { nm : { $regex : keyword } }
 var _q1 = { brand : { $regex : keyword } }
+var _q2 = { info : { $in : [ keyword ] } },
 
 var cnt = col0.find( _q ).count();
 var r = []
+var _cr = {};
+
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    r.push( item )   
+    if( !_cr[ item._id ] ) r.push( item )   
 })
 
 col0.find( _q1 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    r.push( item )   
+    if( !_cr[ item._id ] ) r.push( item )   
+})
+
+col0.find( _q2 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
+    if( !_cr[ item._id ] ) r.push( item )   
 })
 
 printjson({cnt : cnt, r : r })
