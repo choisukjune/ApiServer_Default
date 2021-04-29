@@ -13,15 +13,23 @@ var sort = {score:{$meta:"textScore"} }
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
 //	sort[ "saleRatio" ] = -1;
 
-var _q = { $text: { $search: keyword } }
-var _q1 = { score : { $meta: "textScore" } }
+var _q = {
+    $or : [
+		{ nm : { $regex : keyword, '$options': 'i'  } },
+		{ brand : { $regex : keyword, '$options': 'i'  } },
+		{ info : { $in : [ keyword ]} },
+		{ $text: {$search: keyword }}
+	]
+}
+var _q1 = {score:{$meta: "textScore"} }
+
 
 var skip = ( page - 1 ) * limit
 
 var cnt = col0.find( _q ).count();
 var r = []
 
-col0.find( _q ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
+col0.find( _q,_q1 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )   
 })
 
