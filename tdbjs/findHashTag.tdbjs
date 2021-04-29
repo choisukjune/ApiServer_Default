@@ -2,47 +2,34 @@ var db_nm = "data";
 var col_nm = "all";
 var page = <!=PAGE=!>
 var limit =<!=LIMIT=!>
-var keyword = /<!=TAG=!>/
+var keyword = decodeURIComponent("<!=TAG=!>")
 
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );
 
 //collection data all remove;
 
+
 var sort = {};
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
-//	sort[ "saleRatio" ] = -1;
+	sort[ "saleRatio" ] = -1;
 
-//var _q = {
-//    $or : [
-//		{ nm : { $regex : keyword } },
-//		{ brand : { $regex : keyword } },
-//		{ info : { $in : [ keyword ] } },
-////		{ $text: { $search: keyword } }
-//	]
-//}
+var _q = {
+    $or : [
+		{ nm : { $regex : keyword, '$options': 'i'  } },
+		{ brand : { $regex : keyword, '$options': 'i'  } },
+		{ info : { $in : [ keyword ] } },
+//		{ $text: { $search: keyword } }
+	]
+}
 
 var skip = ( page - 1 ) * limit
 
-var _q = { nm : { $regex : keyword } }
-var _q1 = { brand : { $regex : keyword } }
-var _q2 = { info : { $elemMatch :  keyword  } }
-
 var cnt = col0.find( _q ).count();
 var r = []
-var _cr = {};
-
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    if( !_cr[ item._id ] ) r.push( item )   
-})
-
-col0.find( _q1 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    if( !_cr[ item._id ] ) r.push( item )   
-})
-
-col0.find( _q2 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    if( !_cr[ item._id ] ) r.push( item )   
+    r.push( item )   
 })
 
 printjson({cnt : cnt, r : r })
