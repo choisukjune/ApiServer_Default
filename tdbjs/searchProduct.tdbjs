@@ -9,15 +9,16 @@ var col0 = db0.getCollection( col_nm );
 
 //collection data all remove;
 
-var sort = {}
+var sort = {score:{$meta:"textScore"} }
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
-	sort[ "saleRatio" ] = -1;
+//	sort[ "saleRatio" ] = -1;
 
 var _q = {
     $or : [
-		{ nm : { $regex : keyword, '$options': 'i'  } },
-		{ brand : { $regex : keyword, '$options': 'i'  } },
+//		{ nm : { $regex : keyword, '$options': 'i'  } },
+//		{ brand : { $regex : keyword, '$options': 'i'  } },
 	//	{ info : { $in : [ keyword ]} }
+		{ $text: {$search: keyword }},{score:{$meta: "textScore"} }
 	]
 }
 
