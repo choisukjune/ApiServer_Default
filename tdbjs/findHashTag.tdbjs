@@ -2,6 +2,7 @@ var db_nm = "data";
 var col_nm = "all";
 var page = <!=PAGE=!>
 var limit =<!=LIMIT=!>
+var keyword = decodeURIComponent("<!=TAG=!>")
 
 var db0 = db.getSiblingDB( db_nm );
 var col0 = db0.getCollection( col_nm );
@@ -12,9 +13,13 @@ var sort = {}
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
 	sort[ "saleRatio" ] = -1;
 
-var _q = {}
-    _q.info = { $in : [ decodeURIComponent("<!=TAG=!>") ] };
-
+var _q = {
+    $or : [
+		{ nm : { $regex : keyword, '$options': 'i'  } },
+		{ brand : { $regex : keyword, '$options': 'i'  } },
+	//	{ info : { $in : [ keyword ]} }
+	]
+}
 
 var skip = ( page - 1 ) * limit
 
