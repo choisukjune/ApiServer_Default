@@ -25,11 +25,16 @@ var sort = {};
 var skip = ( page - 1 ) * limit
 
 var _q = { nm : { $regex : keyword } }
+var _q1 = { brand : { $regex : keyword } }
 
 var cnt = col0.find( _q ).count();
 var r = []
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
+    r.push( item )   
+})
+
+col0.find( _q1 ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )   
 })
 
