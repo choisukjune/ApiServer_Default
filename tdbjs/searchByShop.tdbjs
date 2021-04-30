@@ -26,10 +26,20 @@ var _q = {};
 var skip = ( page - 1 ) * limit
 
 var cnt = col0.find( _q ).count();
-var r = []
+var _tags = {};
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
-    r.push( item )   
+    r.push( item )
+
+        var i = 0,iLen = item.info.length,io;
+        for(;i<iLen;++i){
+                io = item.info[ i ]
+                if( _tags[ io ] ) _tags[ io ] = _tags[ io ] + 1;
+                else _tags[ io ] = 1;
+        }
 })
 
-printjson({cnt : cnt, r : r })
+var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,20)
+
+
+printjson({cnt : cnt, r : r, tags : tags })
