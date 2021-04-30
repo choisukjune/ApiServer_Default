@@ -36,7 +36,7 @@ var skip = ( page - 1 ) * limit
 
 var cnt = col0.find( _q ).count();
 var r = []
-var tags = [];
+var _tags = {};
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )
@@ -44,8 +44,12 @@ col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item)
 	var i = 0,iLen = item.info.length,io;
 	for(;i<iLen;++i){
 		io = item.info[ i ]
-		if( tags.indexOf( io ) == -1 ) tags.push( io );
+		if( tags[ io ] ) tags[ io ] = tags[ io ] + 1;
+		else tags[ io ] = 1;
 	}
 })
+
+var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,21)
+
 
 printjson({cnt : cnt, r : r, tags : tags })
