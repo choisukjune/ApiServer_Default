@@ -12,13 +12,22 @@ var col0 = db0.getCollection( col_nm );
 
 var sort = {};
 //	sort[ "crwaling_date_o.timeStamp" ] = -1;
-	sort[ "saleRatio" ] = -1;
+//	sort[ "saleRatio" ] = -1;
+
+//var _q = {
+//    $or : [
+//		{ nm : { $regex : keyword, '$options': 'i'  } },
+//		{ brand : { $regex : keyword, '$options': 'i'  } },
+//		{ info : { $in : [ keyword ] } },
+////		{ $text: { $search: keyword } }
+//	]
+//}
 
 var _q = {
     $or : [
-		{ nm : { $regex : keyword, '$options': 'i'  } },
-		{ brand : { $regex : keyword, '$options': 'i'  } },
-		{ info : { $in : [ keyword ] } },
+		{ _search_ : { $regex : keyword, '$options': 'i'  } },
+//		{ brand : { $regex : keyword, '$options': 'i'  } },
+//		{ info : { $in : [ keyword ] } },
 //		{ $text: { $search: keyword } }
 	]
 }
