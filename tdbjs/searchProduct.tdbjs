@@ -35,6 +35,7 @@ var _q = {
 var skip = ( page - 1 ) * limit
 
 var cnt = col0.find( _q ).count();
+var r = [];
 var _tags = {};
 
 col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
