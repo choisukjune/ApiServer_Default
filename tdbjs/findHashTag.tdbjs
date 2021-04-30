@@ -24,7 +24,8 @@ var sort = {};
 //}
 
 var _q = {
-    $or : [
+    $and : [
+		{ $text: { $search: keyword } }.
 		{ _search_ : { $regex : keyword, '$options': 'i'  } },
 //		{ brand : { $regex : keyword, '$options': 'i'  } },
 //		{ info : { $in : [ keyword ] } },
