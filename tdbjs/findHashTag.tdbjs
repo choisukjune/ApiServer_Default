@@ -49,7 +49,7 @@ col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item)
         }
 })
 
-var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,21)
+var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,20)
 
 
 printjson({cnt : cnt, r : r, tags : tags })
