@@ -144,10 +144,11 @@ global.server = http.createServer(function(req, res){
 global.wss = new WebSocket.Server({ server : global.server });
 
 global.wss.on('connection', function connection( ws ) {
-  ws.send('Hello! Nice to meet you!');
-});
-global.wss.on('message', function incoming( message ){
+	global.ws = ws;
+  global.ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
+  });
+  global.ws.send('Hello! Nice to meet you!');
 });
 
 
