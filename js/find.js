@@ -228,7 +228,8 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
-		res.end( r )	
+		res.end( r )
+		global.wss.send( decodeURIComponent( paramsO.tag ) );
 
 	});
 
@@ -594,7 +595,7 @@ var paramToObject = function( url ){
 	* </code>
 	*/
 	global.server.addRouter("/searchByShop",function( req, res ){
-		debugger;
+		
 		var routerNm = req.url.split("?")[0];
 		var paramsO = paramToObject( decodeURIComponent( req.url  ));
 		var _tdbjs_nm = "searchByShop";
