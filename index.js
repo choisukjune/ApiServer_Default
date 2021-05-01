@@ -10,6 +10,7 @@ var cp = require( "child_process" );
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
+var WebSocket = require('ws');
 
 //-------------------------------------------------------;
 // VARIABLE;
@@ -138,7 +139,19 @@ global.server = http.createServer(function(req, res){
 
 	return;
 
-}).listen( server_port );
+})
+
+global.wss = new WebSocket.Server({ server : global.server });
+
+global.wss.on('connection', function connection( ws ) {
+  ws.on('message', function incoming( message ){
+	console.log('received: %s', message);
+  });
+  ws.send('Hello! Nice to meet you!');
+});
+
+
+global.server.listen( server_port );
 
 //-------------------------;
 //-------------------------;
