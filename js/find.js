@@ -228,7 +228,14 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
-		global.ws.send( decodeURIComponent( paramsO.tag ) + "이 검색되었습니다." );
+		
+		global.wss.clients.forEach(function each(client) {
+		  if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+			client.send( decodeURIComponent( paramsO.tag ) + "이 검색되었습니다." );
+		  }
+		});
+		
 		res.end( r )
 
 
