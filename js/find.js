@@ -232,7 +232,8 @@ var paramToObject = function( url ){
 		global.wss.clients.forEach(function each(client) {
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
-			client.send( decodeURIComponent( paramsO.tag ) + "이 검색되었습니다." );
+			if( global.ws == client ) return;
+			else client.send( decodeURIComponent( paramsO.tag ) + "이 검색되었습니다." );
 		  }
 		});
 		
