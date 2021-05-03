@@ -233,7 +233,7 @@ var paramToObject = function( url ){
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
 			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( paramsO.tag ) + "이 검색되었습니다." );
+			else client.send( decodeURIComponent( paramsO.tag ) + " - 검색되었습니다." );
 		  }
 		});
 		
