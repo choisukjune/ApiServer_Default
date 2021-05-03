@@ -144,7 +144,7 @@ global.server = http.createServer(function(req, res){
 global.wss = new WebSocket.Server({ server : global.server });
 
 global.wss.on('connection', function connection( ws ) {
-global.ws = ws;
+	global.ws = ws;
   global.ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
   });

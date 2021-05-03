@@ -578,6 +578,15 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
+		
+		global.wss.clients.forEach(function each(client) {
+		  if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+			if( global.ws == client ) return;
+			else client.send( decodeURIComponent( paramsO.keyword ) + " - 검색되었습니다." );
+		  }
+		});
+
 		res.end( r )	
 
 	});
@@ -637,6 +646,15 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
+
+		global.wss.clients.forEach(function each(client) {
+		  if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+			if( global.ws == client ) return;
+			else client.send( decodeURIComponent( paramsO.shop ) + " - 검색되었습니다." );
+		  }
+		});
+
 		res.end( r )	
 
 	});
@@ -696,6 +714,15 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
+
+		global.wss.clients.forEach(function each(client) {
+		  if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+			if( global.ws == client ) return;
+			else client.send( decodeURIComponent( paramsO.brand ) + " - 검색되었습니다." );
+		  }
+		});
+
 		res.end( r )	
 
 	});
