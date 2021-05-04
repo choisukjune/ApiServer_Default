@@ -156,7 +156,7 @@ global.wss.on('connection', function connection( ws ) {
 			if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
 				if( ws == client ) return;
-				else client.send(  paramsO.data );
+				else client.send(  message );
 			}
 		});
 	}
