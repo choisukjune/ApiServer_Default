@@ -154,7 +154,7 @@ var paramToObject = function( url ){
 		  }
 		});
 
-		res.end(1)	
+		res.end()	
 
 	});
 })();
