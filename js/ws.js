@@ -138,7 +138,7 @@ var paramToObject = function( url ){
 	global.server.addRouter("/broadCastProduct",function( req, res ){
 
 		var routerNm = req.url.split("?")[0];
-		var paramsO = paramToObject( req.url );
+		var paramsO = paramToObject( decodeURIComponent( req.url ) );
 			
 
 		res.statusCode = 200;
@@ -150,7 +150,7 @@ var paramToObject = function( url ){
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
 			if( global.ws == client ) return;
-			else client.send(  paramsO.data );
+			else client.send(  JSON.stringify( paramsO.data ) );
 		  }
 		});
 
