@@ -152,7 +152,13 @@ global.wss.on('connection', function connection( ws ) {
 	if( _data.type == "prductClick" )
 	{
 		console.log("상품을 클릭함")
-		ws.send( message );
+		global.wss.clients.forEach(function each(client) {
+			if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+				if( ws == client ) return;
+				else client.send(  paramsO.data );
+			}
+		});
 	}
 	else if( _m_data.type == "connection" )
 	{
