@@ -148,7 +148,7 @@ global.wss.on('connection', function connection( ws ) {
   global.ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
   });
-  global.ws.send('Hello! Nice to meet you!');
+  //global.ws.send('Hello! Nice to meet you!');
 });
 
 
