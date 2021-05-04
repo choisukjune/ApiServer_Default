@@ -148,6 +148,20 @@ global.wss.on('connection', function connection( ws ) {
 
   ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
+	var _data = JSON.parse( message );
+	if( _data.type == "prductClick" )
+	{
+		console.log("상품을 클릭함")
+		ws.send( message );
+	}
+	else if( _m_data.type == "connection" )
+	{
+		console.log(2)
+	}
+	else
+	{
+		console.log(1)
+	}
   });
    ws.on('close', function close() {
     console.log('disconnected SOCKET - PORT : 5000');
