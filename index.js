@@ -160,7 +160,7 @@ global.wss.on('connection', function connection( ws ) {
 			}
 		});
 	}
-	else if( _m_data.type == "connection" )
+	else if( _data.type == "connection" )
 	{
 		console.log(2)
 	}
