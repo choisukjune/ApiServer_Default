@@ -177,7 +177,29 @@ global.wss.on('connection', function connection( ws ) {
 	}
 	else if( _data.type == "keywordSearch" )
 	{
-		console.log("태그를 검색함")
+		console.log("키워드를 검색함")
+		global.wss.clients.forEach(function each(client) {
+			if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+				if( ws == client ) return;
+				else client.send(  message );
+			}
+		});
+	}
+	else if( _data.type == "brandSearch" )
+	{
+		console.log("브랜드를 검색함")
+		global.wss.clients.forEach(function each(client) {
+			if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+				if( ws == client ) return;
+				else client.send(  message );
+			}
+		});
+	}
+	else if( _data.type == "shopSearch" )
+	{
+		console.log("온라인샵을 검색함")
 		global.wss.clients.forEach(function each(client) {
 			if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
