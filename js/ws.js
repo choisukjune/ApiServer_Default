@@ -8,6 +8,7 @@ if( console ) console.log( "[ S ] - " + fileNm + "----------" );
 //-------------------------------------------------------;
 
 var fs = require( "fs" );
+var url = require('url');
 
 //-------------------------------------------------------;
 // VARIABLE;
@@ -86,18 +87,20 @@ var deleteLines = function( str, n ){
  */
 var paramToObject = function( url ){
 	
-	var r =  url.split("?")[ 1 ];
-	var a = r.split("&");
-	var o = {};
-	var i = 0,iLen = a.length,io;
-	
-	for(;i<iLen;++i){
-		io = a[ i ];
-		var _ta = io.split( "=" );
-		o[ _ta[0] ] = _ta[ 1 ];
-	}
-	console.log( o )
-	return o;
+//	var r =  url.split("?")[ 1 ];
+//	var a = r.split("&");
+//	var o = {};
+//	var i = 0,iLen = a.length,io;
+//	
+//	for(;i<iLen;++i){
+//		io = a[ i ];
+//		var _ta = io.split( "=" );
+//		o[ _ta[0] ] = _ta[ 1 ];
+//	}
+//	console.log( o )
+var queryData = url.parse( url, true).query;
+	console.log(queryData);
+	return queryData;
 };
 //-------------------------;
 //-------------------------;
