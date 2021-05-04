@@ -233,7 +233,11 @@ var paramToObject = function( url ){
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
 			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( paramsO.tag ) + " - 검색되었습니다." );
+			var _r = {
+				type : "tagSearch"
+				, data : decodeURIComponent( paramsO.tag )
+			}
+			else client.send( JSON.stringify( _r ) );
 		  }
 		});
 		
