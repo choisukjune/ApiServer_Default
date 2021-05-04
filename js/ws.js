@@ -85,7 +85,7 @@ var deleteLines = function( str, n ){
  * @param {String} url
  * @return {Object} o
  */
-var paramToObject = function( data ){
+var paramToObject = function( _url ){
 	
 //	var r =  url.split("?")[ 1 ];
 //	var a = r.split("&");
@@ -98,8 +98,7 @@ var paramToObject = function( data ){
 //		o[ _ta[0] ] = _ta[ 1 ];
 //	}
 //	console.log( o )
-var queryData = url.parse( data, true).query;
-	console.log(queryData);
+	var queryData = url.parse( _url, true).query;
 	return queryData;
 };
 //-------------------------;

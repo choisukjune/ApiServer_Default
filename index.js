@@ -142,13 +142,18 @@ global.server = http.createServer(function(req, res){
 })
 
 global.wss = new WebSocket.Server({ server : global.server });
-
+global.ws = {};
+global.ws.clients = {};
 global.wss.on('connection', function connection( ws ) {
-	global.ws = ws;
+
   global.ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
   });
-  //global.ws.send('Hello! Nice to meet you!');
+   global.ws.on('close', function close() {
+    console.log('disconnected SOCKET - PORT : 5000');
+  });
+  //var r = {	type : "connection", data : id };
+  //global.ws.send( JSON.stringify( r ) );
 });
 
 

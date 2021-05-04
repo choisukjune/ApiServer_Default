@@ -8,6 +8,7 @@ if( console ) console.log( "[ S ] - " + fileNm + "----------" );
 //-------------------------------------------------------;
 
 var fs = require( "fs" );
+var url = require('url');
 
 //-------------------------------------------------------;
 // VARIABLE;
@@ -84,20 +85,21 @@ var deleteLines = function( str, n ){
  * @param {String} url
  * @return {Object} o
  */
-var paramToObject = function( url ){
+var paramToObject = function( _url ){
 	
-	var r =  url.split("?")[ 1 ];
-	var a = r.split("&");
-	var o = {};
-	var i = 0,iLen = a.length,io;
-	
-	for(;i<iLen;++i){
-		io = a[ i ];
-		var _ta = io.split( "=" );
-		o[ _ta[0] ] = _ta[ 1 ];
-	}
-	console.log( o )
-	return o;
+//	var r =  url.split("?")[ 1 ];
+//	var a = r.split("&");
+//	var o = {};
+//	var i = 0,iLen = a.length,io;
+//	
+//	for(;i<iLen;++i){
+//		io = a[ i ];
+//		var _ta = io.split( "=" );
+//		o[ _ta[0] ] = _ta[ 1 ];
+//	}
+//	console.log( o )
+	var queryData = url.parse( _url, true).query;
+	return queryData;
 };
 //-------------------------;
 //-------------------------;
@@ -228,19 +230,7 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
-		
-		global.wss.clients.forEach(function each(client) {
-		  if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-			var _r = {
-				type : "tagSearch"
-				, data : decodeURIComponent( paramsO.tag )
-			}
-			if( global.ws == client ) return;
-			else client.send( JSON.stringify( _r ) );
-		  }
-		});
-		
+				
 		res.end( r )
 
 
@@ -582,14 +572,6 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
-		
-		global.wss.clients.forEach(function each(client) {
-		  if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( paramsO.keyword ) + " - 검색되었습니다." );
-		  }
-		});
 
 		res.end( r )	
 
@@ -651,13 +633,6 @@ var paramToObject = function( url ){
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
 
-		global.wss.clients.forEach(function each(client) {
-		  if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( paramsO.shop ) + " - 검색되었습니다." );
-		  }
-		});
 
 		res.end( r )	
 
@@ -718,14 +693,6 @@ var paramToObject = function( url ){
 
 		fs.writeFileSync( DBJS_DIRECTORY_PATH + dbjs_nm , query, { flag : "w" } );
 		var r = exec_query_DB( dbjs_nm )
-
-		global.wss.clients.forEach(function each(client) {
-		  if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( paramsO.brand ) + " - 검색되었습니다." );
-		  }
-		});
 
 		res.end( r )	
 
