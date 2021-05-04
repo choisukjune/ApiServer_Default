@@ -38,9 +38,11 @@ col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item)
                 if( _tags[ io ] ) _tags[ io ] = _tags[ io ] + 1;
                 else _tags[ io ] = 1;
         }
+		if( brands.indexOf( item.brand ) == -1 ) brands.push( item.brand );
 })
 
-var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,20)
+var allTags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]});
+var tags = allTags.slice(0,20);
 
 
-printjson({cnt : cnt, r : r, tags : tags })
+printjson({cnt : cnt, r : r, tags : tags, brands : brands, allTags : allTags })
