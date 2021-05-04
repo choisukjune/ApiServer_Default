@@ -232,11 +232,11 @@ var paramToObject = function( url ){
 		global.wss.clients.forEach(function each(client) {
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
-			if( global.ws == client ) return;
 			var _r = {
 				type : "tagSearch"
 				, data : decodeURIComponent( paramsO.tag )
 			}
+			if( global.ws == client ) return;
 			else client.send( JSON.stringify( _r ) );
 		  }
 		});
