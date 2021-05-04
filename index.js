@@ -175,6 +175,17 @@ global.wss.on('connection', function connection( ws ) {
 			}
 		});
 	}
+	else if( _data.type == "keywordSearch" )
+	{
+		console.log("태그를 검색함")
+		global.wss.clients.forEach(function each(client) {
+			if (client.readyState === WebSocket.OPEN) {
+			//client.send(data);
+				if( ws == client ) return;
+				else client.send(  message );
+			}
+		});
+	}
   });
    ws.on('close', function close() {
     console.log('disconnected SOCKET - PORT : 5000');
