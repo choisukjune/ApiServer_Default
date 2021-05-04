@@ -48,7 +48,7 @@ col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item)
                 if( _tags[ io ] ) _tags[ io ] = _tags[ io ] + 1;
                 else _tags[ io ] = 1;
         }
-		if( brands.indexOf(io.brand) != -1 ) brands.push( io.brand );
+		if( brands.indexOf(io.brand) == -1 ) brands.push( io.brand );
 })
 
 var tags = Object.keys(_tags).sort(function(a,b){return _tags[b]-_tags[a]}).slice(0,20)
