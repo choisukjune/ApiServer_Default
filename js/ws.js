@@ -150,7 +150,7 @@ var paramToObject = function( url ){
 		  if (client.readyState === WebSocket.OPEN) {
 			//client.send(data);
 			if( global.ws == client ) return;
-			else client.send( decodeURIComponent( JSON.stringify( paramsO ) ) );
+			else client.send( paramsO );
 		  }
 		});
 
