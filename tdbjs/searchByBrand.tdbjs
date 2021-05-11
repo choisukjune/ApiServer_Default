@@ -15,7 +15,7 @@ var sort = {};
 //	sort[ "saleRatio" ] = -1;
 
 var _q = { brand : brand }
-
+var _p = { _id : -1 }
 var skip = ( page - 1 ) * limit
 
 var cnt = col0.find( _q ).count();
@@ -23,7 +23,7 @@ var r = [];
 var _tags = {};
 var brands = [];
 
-col0.find( _q  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
+col0.find( _q, _p  ).sort( sort ).limit( limit ).skip( skip ).forEach(function(item){
     r.push( item )
 
         var i = 0,iLen = item.info.length,io;
