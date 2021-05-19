@@ -9,7 +9,7 @@ if( console ) console.log( "[ S ] - " + fileNm + "----------" );
 
 var fs = require( "fs" );
 var url = require('url');
-var https : = require( 'https' );
+var https = require( 'https' );
 
 //-------------------------------------------------------;
 // VARIABLE;
