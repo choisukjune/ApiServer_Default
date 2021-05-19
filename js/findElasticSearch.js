@@ -193,7 +193,11 @@ var requestHTTPS_POST = function( option, data, cbFunction ){
 			path: '/_all/_search',
 			method: 'POST',
 		};
-		var data = JSON.stringify( paramsO.data );
+		var data = JSON.stringify({
+		  "query": {
+			"match_all": {}
+		  }
+		});
 
 		requestHTTPS_POST(option, data, function(d){
 			console.log( d );
