@@ -127,7 +127,7 @@ var requestHTTPS_POST = function( option, data, cbFunction ){
 	option.headers[ 'Content-Type' ] = 'application/json';
 	option.headers[ 'Content-Length' ] = data.length;
 
-	var req = https.request( options, function( res ){
+	var req = https.request( option, function( res ){
 		console.log(`statusCode: ${res.statusCode}`)
 		res.on('data', function( d ){
 			//process.stdout.write(d)
