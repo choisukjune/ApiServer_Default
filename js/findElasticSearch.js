@@ -123,6 +123,7 @@ var paramToObject = function( _url ){
  */
 var requestHTTPS_POST = function( option, data, cbFunction ){
 	
+	option.headers = {};
 	option.headers[ 'Content-Type' ] = 'application/json';
 	option.headers[ 'Content-Length' ] = data.length;
 
