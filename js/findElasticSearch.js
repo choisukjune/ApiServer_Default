@@ -200,7 +200,7 @@ var requestHTTPS_POST = function( option, data, cbFunction ){
 		});
 
 		requestHTTPS_POST(option, data, function(d){
-			console.log( d );
+			console.log( d.toString() );
 			res.end( d )		
 		});
 	});
