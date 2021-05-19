@@ -190,7 +190,7 @@ var requestHTTPS_POST = function( option, data, cbFunction ){
 		var option =  {
 			hostname: _ELASTIC_URL_,
 			port: 443,
-			path: '/_all/_search',
+			path: '/_all/_search?pretty',
 			method: 'POST',
 		};
 		var data = JSON.stringify({
