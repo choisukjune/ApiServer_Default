@@ -193,9 +193,10 @@ var requestHTTPS_POST = function( option, data, cbFunction ){
 			path: '/_all/_search',
 			method: 'POST',
 		};
-		var data = paramsO.data;
+		var data = JSON.stringify( paramsO.data );
 
 		requestHTTPS_POST(option, data, function(d){
+			console.log( d );
 			res.end( d )		
 		});
 	});
