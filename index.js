@@ -141,6 +141,14 @@ global.server = http.createServer(function(req, res){
 
 })
 
+
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//웹소켓연결부분;
+
 global.wss = new WebSocket.Server({ server : global.server });
 global.ws = {};
 global.ws.clients = {};
@@ -148,66 +156,6 @@ global.wss.on('connection', function connection( ws ) {
 
   ws.on('message', function incoming( message ){
 	console.log('received: %s', message);
-	var _data = JSON.parse( message );
-	if( _data.type == "prductClick" )
-	{
-		console.log("상품을 클릭함")
-		global.wss.clients.forEach(function each(client) {
-			if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-				if( ws == client ) return;
-				else client.send(  message );
-			}
-		});
-	}
-	else if( _data.type == "connection" )
-	{
-		console.log(2)
-	}
-	else if( _data.type == "tagSearch" )
-	{
-		console.log("태그를 검색함")
-		global.wss.clients.forEach(function each(client) {
-			if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-				if( ws == client ) return;
-				else client.send(  message );
-			}
-		});
-	}
-	else if( _data.type == "keywordSearch" )
-	{
-		console.log("키워드를 검색함")
-		global.wss.clients.forEach(function each(client) {
-			if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-				if( ws == client ) return;
-				else client.send(  message );
-			}
-		});
-	}
-	else if( _data.type == "brandSearch" )
-	{
-		console.log("브랜드를 검색함")
-		global.wss.clients.forEach(function each(client) {
-			if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-				if( ws == client ) return;
-				else client.send(  message );
-			}
-		});
-	}
-	else if( _data.type == "shopSearch" )
-	{
-		console.log("온라인샵을 검색함")
-		global.wss.clients.forEach(function each(client) {
-			if (client.readyState === WebSocket.OPEN) {
-			//client.send(data);
-				if( ws == client ) return;
-				else client.send(  message );
-			}
-		});
-	}
   });
    ws.on('close', function close() {
     console.log('disconnected SOCKET - PORT : 5000');
@@ -215,6 +163,13 @@ global.wss.on('connection', function connection( ws ) {
   //var r = {	type : "connection", data : id };
   //global.ws.send( JSON.stringify( r ) );
 });
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+//--------------------------------------------------;
+
 
 
 global.server.listen( server_port );
