@@ -30,6 +30,15 @@ global.server.addRouter = function(a,b){ return global.ROUTER_LIST[ a ] = b; };
 //-------------------------;
 //-------------------------;
 
+global.CONFIG = {};
+global.CONFIG.wss = 0;
+
+//-------------------------;
+//-------------------------;
+//-------------------------;
+//-------------------------;
+//-------------------------;
+
 global.ROUTER_LIST = {};
 
 //-------------------------;
@@ -199,21 +208,24 @@ global.server = http.createServer(function(req, res){
 //--------------------------------------------------;
 //--------------------------------------------------;
 //웹소켓연결부분;
+if( global.CONFIG.wss )
+{
+	global.wss = new WebSocket.Server({ server : global.server });
+	global.ws = {};
+	global.ws.clients = {};
+	global.wss.on('connection', function connection( ws ) {
 
-global.wss = new WebSocket.Server({ server : global.server });
-global.ws = {};
-global.ws.clients = {};
-global.wss.on('connection', function connection( ws ) {
+	ws.on('message', function incoming( message ){
+		console.log('received: %s', message);
+	});
+	ws.on('close', function close() {
+		console.log('disconnected SOCKET - PORT : 5000');
+	});
+	//var r = {	type : "connection", data : id };
+	//global.ws.send( JSON.stringify( r ) );
+	});
 
-  ws.on('message', function incoming( message ){
-	console.log('received: %s', message);
-  });
-   ws.on('close', function close() {
-    console.log('disconnected SOCKET - PORT : 5000');
-  });
-  //var r = {	type : "connection", data : id };
-  //global.ws.send( JSON.stringify( r ) );
-});
+}
 //--------------------------------------------------;
 //--------------------------------------------------;
 //--------------------------------------------------;
